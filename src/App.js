@@ -6,16 +6,16 @@ class App extends Component {
   constructor (props) {
     super (props)
     this.state = {
-      clicked: false 
+      list: ["Buy shopping","Learn React"],
     }
   }
 
   handleClick() {
-    const clicked = {...this.state}
+    const newState = { ...this.state, list: this.state.list.concat('go out') }
 
     this.setState(
       {
-        clicked: !clicked.clicked
+        list: newState.list
       }
     )
     
@@ -31,7 +31,7 @@ class App extends Component {
         />
         <p>
         {
-          this.state.clicked.toString()
+          this.state.list
         }
         </p>
       </div>
@@ -40,10 +40,15 @@ class App extends Component {
 }
 
 
-function ToDo (props) {
+class ToDo extends Component {
+  
+  render() {
   return (
-    <h1 onClick ={() =>  props.onClick() } > hello</h1>
+    <h1 onClick ={() =>  this.props.onClick() } > hello</h1>
   )
 }
+}
+
+
 
 export default App;
