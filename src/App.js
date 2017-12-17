@@ -1,54 +1,46 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
-
-  constructor (props) {
-    super (props)
+  constructor(props) {
+    super(props);
     this.state = {
-      list: ["Buy shopping","Learn React"],
-    }
+      list: ["Buy shopping", "Learn React"]
+    };
   }
 
   handleClick() {
-    const newState = { ...this.state, list: this.state.list.concat('go out') }
+    const newState = { ...this.state, list: this.state.list.concat("go out") };
 
-    this.setState(
-      {
-        list: newState.list
-      }
-    )
-    
+    this.setState({
+      list: newState.list
+    });
   }
 
   render() {
-    
     return (
-      <div className='App'>
-        <ToDo 
-          value={ 'bang' } 
-          onClick={ () => this.handleClick() }
-        />
-        <p>
-        {
-          this.state.list
-        }
-        </p>
+      <div className="App">
+        <ToDo value={"bang"} onClick={() => this.handleClick()} />
+
+        <Renderlist value={this.state.list} />
       </div>
     );
   }
 }
 
-
 class ToDo extends Component {
-  
   render() {
-  return (
-    <h1 onClick ={() =>  this.props.onClick() } > hello</h1>
-  )
-}
+    return <h1 onClick={() => this.props.onClick()}> hello</h1>;
+  }
 }
 
-
+function Renderlist (toDos) {
+    console.log('todos',toDos)
+   return (
+      toDos.value.map( (toDo,index) => {
+        return ( <p key={index}>{toDo}</p> )
+      })
+    )
+}
 
 export default App;
