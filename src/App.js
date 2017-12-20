@@ -30,7 +30,16 @@ class App extends Component {
 
 class ToDo extends Component {
   render() {
-    return <h1 onClick={() => this.props.onClick()}> hello</h1>;
+    return (
+      <div>
+       <label>
+         Add toDO: 
+       <input type = 'text' placeholder = 'What do you need to do?'/>
+       </label>
+       <button onClick={() => this.props.onClick()}> Submit</button>
+       
+      </div>
+    )
   }
 }
 
